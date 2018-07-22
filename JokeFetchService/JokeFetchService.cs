@@ -48,5 +48,13 @@ namespace JokeFetchService
                     }))
             };
         }
+
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            while (!cancellationToken.IsCancellationRequested)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(1), cancellationToken);
+            }
+        }
     }
 }
